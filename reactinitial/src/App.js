@@ -7,6 +7,7 @@ const url = "https://demoapi.com/api/laptop";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [laptop, setLaptop] = useState([]);
+  const [btnText, setBtnText] = useState("Show more");
 
   useEffect(() => {
     fetch(url)
@@ -23,11 +24,16 @@ const App = () => {
       {loading ? (
         <LoadingMask />
       ) : (
-        laptop.map((item,index)=>{
-          <Laptop key={index}/>
-        })
-        
-}
+        laptop.map((item, index) => (
+          <Laptop
+            key={index}
+            name={item.name}
+            brand={item.brand}
+            weight={item.weight}
+            btnText={btnText}
+          />
+        ))
+      )}
     </div>
   );
 };

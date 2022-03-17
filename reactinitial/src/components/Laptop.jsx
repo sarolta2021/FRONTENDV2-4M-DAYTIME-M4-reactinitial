@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Laptop({ brand, name, weight, btnText }) {
+function Laptop({ brand, name, weight }) {
+  const [btnText, setBtntext] = useState("Show more");
+
+  const handleClick = () => {
+    setBtntext("show less");
+  };
   return (
     <div>
-      <p>Laptop text</p>
       <p>{brand}</p>
       <p>{name}</p>
       <p>{weight}</p>
-      <button>{btnText}</button>
+      <button onClick={handleClick}>{btnText}</button>
     </div>
   );
 }
